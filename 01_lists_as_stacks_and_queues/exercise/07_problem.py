@@ -21,7 +21,7 @@ def convert():
     internal_seconds -= minutes * 60
     secs = internal_seconds
     if hours >= 24:
-        hours -= 24
+        hours %= 24
     time = f"[{hours:02}:{minutes:02}:{secs:02}]"
     return time
 
