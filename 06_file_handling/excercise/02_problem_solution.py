@@ -1,4 +1,5 @@
-PUNCTUATION_MARKS = ["-", ",", ".", "!", "?", "'"]
+from string import punctuation
+from string import ascii_letters
 
 
 def read_file():
@@ -12,8 +13,8 @@ def read_file():
 def count_punctuation_marks_and_letters(data):
     result = []
     for row in data:
-        punctuation_marks_count = len([symbol for symbol in row if symbol in PUNCTUATION_MARKS])
-        letters_count = len(''.join(row.split())) - punctuation_marks_count
+        punctuation_marks_count = len([symbol for symbol in row if symbol in punctuation])
+        letters_count = len([symbol for symbol in row if symbol in ascii_letters])
         result.append(f"({letters_count})({punctuation_marks_count})")
     return result
 

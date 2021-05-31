@@ -1,4 +1,6 @@
-PUNCTUATION_MARKS = ["-", ",", ".", "!", "?"]
+import re
+
+punctuation_marks_pattern = r"[/./?/!,-]"
 
 
 def read_file():
@@ -6,16 +8,14 @@ def read_file():
         return file_.readlines()
 
 
-def replace_symbols(row):
-    for word_index in range(len(row)):
-        for char_index in range(len(row[word_index])):
-            if row[word_index][char_index] in PUNCTUATION_MARKS:
-                row[word_index] = row[word_index][:char_index] + "@" + row[word_index][char_index + 1:]
-    return row
-
-
 def process_data(data):
     result = []
+
+    def replace_symbols(row_):
+        for word_index in range(len(row_)):
+            row_[word_index] = re.sub(punctuation_marks_pattern, "@", row_[word_index])
+        return row_
+
     for row_index in range(len(data)):
         if row_index % 2 == 0:
             row = list(reversed(data[row_index].split()))
