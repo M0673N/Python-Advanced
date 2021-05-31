@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 
 def get_info():
@@ -15,8 +16,8 @@ def get_info():
 
 
 def deliver_result(info):
-    username = os.getlogin()
-    with open(f'C:\\Users\\{username}\\Desktop\\report.txt', 'w') as file:
+    path = os.path.join(os.path.expanduser("~/Desktop"), "report.txt")
+    with open(path, 'w') as file:
         for extension in info:
             file.write(extension + "\n")
             for name in info[extension]:
