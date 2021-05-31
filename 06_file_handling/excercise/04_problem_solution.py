@@ -16,7 +16,7 @@ def get_info():
 
 
 def deliver_result(info):
-    path = os.path.join(os.path.expanduser("~/Desktop"), "report.txt")
+    path = os.path.normpath(os.path.join(os.path.expanduser("~/Desktop"), "report.txt"))
     with open(path, 'w') as file:
         for extension in info:
             file.write(extension + "\n")
