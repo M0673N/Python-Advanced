@@ -5,7 +5,7 @@ def get_info():
     files = {}
     for filename in os.listdir():
         if os.path.isfile(filename):
-            name, extension = filename.split(".")
+            name, extension = os.path.splitext(filename)
             if extension not in files:
                 files[extension] = [name]
             else:
@@ -18,9 +18,9 @@ def deliver_result(info):
     username = os.getlogin()
     with open(f'C:\\Users\\{username}\\Desktop\\report.txt', 'w') as file:
         for extension in info:
-            file.write("." + extension + "\n")
+            file.write(extension + "\n")
             for name in info[extension]:
-                file.write(f"- - - {name}.{extension}\n")
+                file.write(f"- - - {name}{extension}\n")
 
 
 data = get_info()
