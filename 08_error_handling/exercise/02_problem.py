@@ -27,7 +27,7 @@ while True:
     if len(name) <= 4:
         raise NameTooShortError("Name must be more than 4 characters")
 
-    domain = command[1].split(".")[1]
+    domain = command[1].split(".")[-1]
 
     if domain not in domains:
         raise InvalidDomainError("Domain must be one of the following: .com, .bg, .org, .net")
